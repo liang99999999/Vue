@@ -1,45 +1,41 @@
 <script >
-import Card from "./components/Card.vue"
 export default {
   components: {
-    Card
+
   },
   data() {
-    return{
-      a:1,
-      temp:98
+    return {
+      isShow: true
     }
   },
   methods: {
-    changeAValue(){
-      this.a=this.temp
+    switchBoo() {
+      this.isShow = !this.isShow
     }
   },
   mounted() {
 
-    this.a = 2;
   }
 }
 </script>
 
 <template>
-  
-    <!-- <p>{{ a }}</p> -->
-    <!-- <card /> -->
-    <div class="text-area">
-      <h1>V-model</h1>
-      <h1>V-on</h1>
-      <h2>a: {{ a }}</h2>
-      <p>temp: {{ temp }}</p>
-      <input type="number" v-model="temp">
-      <button type="button" v-on:click="changeAValue">update</button>
-    </div>
-  
-
+  <div class="text-area">
+    <h1>V-model</h1>
+    <button type="button" v-on:click="switchBoo">switch</button>
+    <p>{{ isShow }}</p>
+    <div v-if="isShow" class="box bg-primary"></div>
+    <div v-else class="box bg-info"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-  .text-area{
-    text-align: center;
-  }
+.text-area {
+  text-align: center;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+}
 </style>
